@@ -1,0 +1,1 @@
+Este proyecto corresponde al frontend creado para el TFG de Victor Javier Granero Gil. Es una aplicación hecha en React Native.

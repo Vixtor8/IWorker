@@ -1,0 +1,1 @@
+Este proyecto corresponde al backend creado para el TFG de Victor Javier Granero Gil. Es un servidor hecho en JavaScript con Express.
