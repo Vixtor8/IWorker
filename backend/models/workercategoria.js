@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const workerCategorias = require('../seeders/workerCategorias');
 module.exports = (sequelize, DataTypes) => {
   class workercategoria extends Model {
     /**
@@ -17,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   workercategoria.init({
     nombre: DataTypes.STRING
   }, {
+    tableName: 'workercategorias',
     sequelize,
     modelName: 'workercategoria',
   });

@@ -8,15 +8,15 @@ module.exports = {
     return [
       check('file')
         .custom((value, { req }) => {
-          return FileValidationHelper.checkFileIsImage(req.file)
+          return FileValidationHelper.checkFileIsImage(req.foto)
         })
-        .withMessage('Please only submit image files (jpeg, png, svg).'),
+        .withMessage('Introduzca solo imágenes (jpeg, png, svg).'),
       check('file')
         .custom((value, { req }) => {
           return FileValidationHelper.checkFileMaxSize(req.file, maxFileSize)
         })
-        .withMessage('Maximum file size of ' + maxFileSize / 1000000 + 'MB'),
-      check('password', 'Password should be at least 3 chars long').isLength({ min: 3 })
+        .withMessage('El tamaño máximo de fotos es ' + maxFileSize / 1000000 + 'MB'),
+      check('password', 'La contraseña debe ser de más de 3 de longitud').isLength({ min: 3 })
     ]
   },
 
@@ -26,20 +26,20 @@ module.exports = {
         .custom((value, { req }) => {
           return FileValidationHelper.checkFileIsImage(req.file)
         })
-        .withMessage('Please only submit image files (jpeg, png, svg).'),
+        .withMessage('Introduzca solo imágenes (jpeg, png, svg).'),
       check('file')
         .custom((value, { req }) => {
           return FileValidationHelper.checkFileMaxSize(req.file, maxFileSize)
         })
-        .withMessage('Maximum file size of ' + maxFileSize / 1000000 + 'MB')
+        .withMessage('El tamaño máximo de fotos es ' + maxFileSize / 1000000 + 'MB')
     ]
   },
 
   login: () => {
     return [
-      check('email', 'Email is mandatory, parameter missing.').not().isEmpty(),
-      check('email', 'Not a valid email.').isEmail(),
-      check('password', 'Password is mandatory, parameter missing.').not().isEmpty()
+      check('correo', 'El correo es obligatorio.').not().isEmpty(),
+      check('correo', 'Correo no válido.').isEmail(),
+      check('password', 'La contraseña es obligatoria.').not().isEmpty()
     ]
   }
 }

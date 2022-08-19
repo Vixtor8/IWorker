@@ -1,5 +1,5 @@
 'use strict';
-const bcryptjs = require('bcrypt')
+const bcryptjs = require('bcryptjs')
 const salt = bcryptjs.genSaltSync(10)
 const {
   Model
@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      usuario.hasMany(models.valoracion, { foreignKey: 'idUsuario'});
       usuario.hasOne(models.worker, { foreignKey: 'idUsuario' });
       
     }
@@ -56,6 +55,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE
     }
     }, {
+    tableName: 'usuarios',
     sequelize,
     modelName: 'usuario',
   });

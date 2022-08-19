@@ -1,0 +1,55 @@
+@API = http://localhost:3000
+
+GET {{API}}
+
+###
+POST {{API}}/usuarios/registro
+Content-Type: application/json
+
+{
+  "nombre": "Prueba",
+  "apellidos": "Pruebas Pruebas",
+  "telefono": "123456789",
+  "correo": "prueba@gmail.com",
+  "password": "contraseña"
+}
+
+###
+POST {{API}}/usuarios/login
+Content-Type: application/json
+
+{
+  "correo": "prueba@gmail.com",
+  "password": "contraseña"
+}
+
+###
+GET {{API}}/usuarios/11
+Authorization: Bearer b1565f652313443829cf32db52343d0afd6d68af
+
+###
+PUT {{API}}/usuarios
+Authorization:Bearer 2b502864d041bc7ce743fa4d7090b4c0d63f50ba
+Content-Type: application/json
+
+{
+  "nombre": "Pruebas",
+  "apellidos": "Pruebas Pruebas",
+  "telefono": 123456789,
+  "correo": "prueba@gmail.com"
+}
+
+
+###
+DELETE {{API}}/usuarios
+Authorization:Bearer 2b502864d041bc7ce743fa4d7090b4c0d63f50ba
+Content-Type: application/json
+
+{
+  "nombre": "Pruebas",
+  "apellidos": "Pruebas Pruebas",
+  "telefono": 123456789,
+  "correo": "prueba@gmail.com"
+}
+
+

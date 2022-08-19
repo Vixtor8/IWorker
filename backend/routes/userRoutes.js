@@ -1,7 +1,7 @@
 'use strict'
 const UserValidation = require('../controllers/validation/UserValidation')
 const UserController = require('../controllers/UserController')
-const RestaurantController = require('../controllers/RestaurantController')
+
 const multer = require('multer')
 
 const storage = multer.diskStorage({
@@ -14,13 +14,13 @@ const storage = multer.diskStorage({
     cb(null, Math.random().toString(36).substring(7) + '-' + Date.now() + '.' + file.originalname.split('.').pop())
   }
 })
-const upload = multer({ storage: storage }).single('file')
+const upload = multer({ storage: storage }).single('fotoPerfil')
 
 module.exports = (options) => {
   const app = options.app
   const middlewares = options.middlewares
 
-  app.route('/users')
+  app.route('/usuarios')
     .put(
       middlewares.isLoggedIn,
       upload,
@@ -30,32 +30,23 @@ module.exports = (options) => {
       middlewares.isLoggedIn,
       UserController.destroy)
 
-  app.route('/users/register')
+  app.route('/usuarios/registro')
     .post(
       upload,
       UserValidation.create(),
-      UserController.registerCustomer)
-  app.route('/users/registerOwner')
-    .post(
-      upload,
-      UserValidation.create(),
-      UserController.registerOwner)
-  app.route('/users/login')
+      UserController.registerUsuario)
+
+  app.route('/usuarios/login')
     .post(
       UserValidation.login(),
       UserController.login)
 
-  app.route('/users/myRestaurants')
-    .get(
-      middlewares.isLoggedIn,
-      middlewares.hasRole('owner'),
-      RestaurantController.indexOwner
-    )
-  app.route('/users/isTokenValid')
+  app.route('/usuarios/isTokenValid')
     .put(UserController.isTokenValid)
 
-  app.route('/users/:userId')
+  app.route('/usuarios/:usuarioId')
     .get(
       middlewares.isLoggedIn,
       UserController.show)
+
 }
