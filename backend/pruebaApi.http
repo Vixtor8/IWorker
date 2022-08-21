@@ -24,8 +24,8 @@ Content-Type: application/json
 }
 
 ###
-GET {{API}}/usuarios/11
-Authorization: Bearer b1565f652313443829cf32db52343d0afd6d68af
+GET {{API}}/usuarios/1
+Authorization: Bearer 480fc4fb9f04d841b04bd1d0cc4a5021c9d08015
 
 ###
 PUT {{API}}/usuarios
